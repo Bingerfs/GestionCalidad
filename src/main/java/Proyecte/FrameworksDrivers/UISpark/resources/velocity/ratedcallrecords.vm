@@ -1,0 +1,33 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+<div >
+    <table>
+        <tr>
+            <th>id</th>
+            <th>callerPhoneNumber</th>
+            <th>endPointPhoneNumber</th>
+            <th>Starting time</th>
+            <th>Date</th>
+            <th>Call cost</th>
+        </tr>
+        #foreach($callrecord in $callRecords)
+        <tr>
+            <td>$callrecord.getId_callRecord()</td>
+            <td>$callrecord.getCallerPhoneNumber()</td>
+            <td>$callrecord.getEndPointPhoneNumber()</td>
+            <td>$callrecord.getStartingCallTime()</td>
+            <td>$callrecord.getDate()</td>
+            <td>$callrecord.getCallCost()</td>
+        </tr>
+        #end
+    </table>
+
+</div>
+<div>
+    <form method="post" action="/callrecords/">
+
+
+                <button class="button" type="submit">Save rated cdr's</button>
+        </form>
+</div>
+#end

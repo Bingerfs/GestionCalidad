@@ -1,0 +1,2 @@
+60774491, FriendsReceivable, [79789705]
+79789705, FriendsReceivable, [60774491]

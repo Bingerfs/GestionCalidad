@@ -1,0 +1,25 @@
+parsehub
+para usar esta herramienta Solo tenemos que instalar la extensión en el navegador y acceder 
+a la página de la cual queremos obtener datos de forma automática. Seleccionamos 
+los resultados que queremos en nuestro conjunto y la acción que deseamos realizar, 
+indicando posteriormente el formato de exportación.
+
+Técnicas usuales de Web scraping
+copiar y pegar
+
+
+
+legal case
+
+En el caso más conocido, eBay vs Bidder Edge,
+ la segunda empresa tuvo que parar de hacer
+ peticiones automáticas al sitio de eBay. En este caso,
+ Bidder Edge pujaba automáticamente para ciertos productos en este sitio.
+
+
+Una de las principales luchas en juzgados por scraping involucró a American Airlines
+ y una empresa llamada FareChase. American Airlines ganó aquella batalla, haciendo 
+que FareChase parara de vender un software que le permitía a los usuarios comparar
+ tarifas en línea si el sitio de American Airlines era incluido. La aerolínea dijo 
+que las búsquedas de FareChase entraban sin autorización en los servidores cuando
+ recopilaban la información públicamente disponible.

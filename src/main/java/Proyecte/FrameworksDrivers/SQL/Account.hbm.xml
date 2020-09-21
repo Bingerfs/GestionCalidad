@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="Proyecte.EnterpriseLogic.Account" table="ACCOUNT">
+        <id name="phoneNumber" type="java.lang.String">
+            <column name="phone_number" />
+        </id>
+        <property name="balance" type="java.lang.String">
+            <column name="balance" />
+        </property>
+        <property name="accountType" type="java.lang.String">
+            <column name="account_type" />
+        </property>
+        
+        <many-to-one name = "client" column = "client_id" unique="true" 
+         class="Proyecte.Client" not-null="true"/>
+    </class>
+</hibernate-mapping>

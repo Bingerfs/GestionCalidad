@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Tahoma, Arial, sans-serif;
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    padding: 0 0 40px;
+    color: #333;
+    background: #f9f9f9;
+}
+
+h1, h2, h3, h4 {
+    font-family: monospace;
+    font-weight: 300;
+    color: #444;
+}
+
+small {
+    color: #555;
+}
+
+header {
+    background: #274555;
+    border-bottom: 5px solid #ff7761;
+    box-shadow: 0 1px 0 0 rgba(0,0,0,.6);
+}
+
+nav {
+    padding: 15px;
+    margin: 0 auto;
+    max-width: 800px;
+    position: relative;
+}
+
+nav #menu {
+    margin-top: 20px;
+    float: right;
+}
+
+a {
+    text-decoration: none;
+    color: #ff7761;
+}
+
+#menu li {
+    float: left;
+    margin: 0 10px;
+}
+
+#menu li a, #logout {
+    background: transparent;
+    cursor: pointer;
+    border: 0;
+    font-size: 16px;
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    text-decoration: none;
+}
+
+nav ul, nav li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* Needlessly fancy menu hover effect */
+

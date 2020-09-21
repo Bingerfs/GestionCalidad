@@ -1,0 +1,5 @@
+#* @implicitly included *#
+#* @vtlvariable name="WebPath" type="Proyecte.InterfaceAdapters.Utils.Path.Web" *#
+#* @vtlvariable name="msg" type="Proyecte.InterfaceAdapters.Utils.MessageBundle" *#
+#* @vtlvariable name="callRecords" type="java.lang.Iterable<Proyecte.ApplicationLogic.DTOMappers.CallRecordDto>" *#
+        #* @vtlvariable name="currentUser" type="java.lang.String" *#

@@ -1,0 +1,40 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+<div class="row row-3">
+    <div>
+        <form method="post" action="/accounts/" enctype="multipart/form-data">
+            <label for="file">
+                SELECT THE ACCOUNTS FILE
+            </label>
+            <p></p>
+
+            <input type="file"
+                   id="file" name="file"
+                   accept=".txt" required>
+
+                <button class="button" type="submit">Upload accounts</button>
+        </form>
+
+    </div>
+    <p></p>
+    <!--<div>
+        <form method="post" action="/loadaccounts">
+            <label for="avatar2">
+                SELECT THE ACCOUNTS FILE
+            </label>
+            <p></p>
+            <input type="file"
+                   id="avatar2" name="avatar"
+                   accept=".txt" required>
+
+                <button class="button" type="submit">LOAD ACCOUNTS</button>
+        </form>
+
+
+
+    </div>
+-->
+
+
+</div>
+#end

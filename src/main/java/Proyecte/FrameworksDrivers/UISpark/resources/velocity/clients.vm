@@ -1,0 +1,19 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+<div class="row row-3">
+    #foreach($client in $clients)
+        <div class="col">
+            <a class="book" >
+                <div class="bookCover">
+                
+                    <h1>Nombre</h1>
+                    <h2>$client.Name</h2>
+                    <h1>Ci</h1>
+                    <h2>$client.Ci</h2>
+                
+                </div>
+            </a>
+        </div>
+    #end
+</div>
+#end

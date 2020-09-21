@@ -1,0 +1,30 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+<div >
+    <table>
+        <tr>
+            <th>id</th>
+            <th>callerPhoneNumber</th>
+            <th>endPointPhoneNumber</th>
+            <th>Starting time</th>
+            <th>Date</th>
+            <th>Call cost</th>
+            <th>Saved at<th>
+        </tr>
+        #foreach($callrecord in $callRecords)
+        <tr>
+            <td>$callrecord.Id_callRecord</td>
+            <td>$callrecord.CallerPhoneNumber</td>
+            <td>$callrecord.EndPointPhoneNumber</td>
+            <td>$callrecord.StartingCallTime</td>
+            <td>$callrecord.Date</td>
+            <td>$callrecord.CallCost</td>
+            #if($callrecord.SavedDate)
+            <td>$callrecord.SavedDate</td>
+            #end
+        </tr>
+        #end
+    </table>
+
+</div>
+#end

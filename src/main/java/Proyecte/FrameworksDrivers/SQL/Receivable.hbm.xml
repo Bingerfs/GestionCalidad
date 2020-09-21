@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="Proyecte.EnterpriseLogic.Receivable" >
+        <id  type="int">  
+            <generator class="native"></generator>  
+        </id>  
+        <discriminator column="type" type="string"></discriminator>  
+        <subclass name="Proyecte.EnterpriseLogic.FriendsReceivable" discriminator-value="friends">
+            <property name="friends" type="string"></property>  
+        </subclass>  
+    </class>
+</hibernate-mapping>

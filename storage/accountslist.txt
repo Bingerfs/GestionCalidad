@@ -1,0 +1,4 @@
+70712345, Jose Perez, Prepago
+60774491, Hector Hidalgo, Postpago, [79789705]
+79789705, Daniela Vela, Wow, [60774491]
+70746843, Raquel Montero, Prepago
