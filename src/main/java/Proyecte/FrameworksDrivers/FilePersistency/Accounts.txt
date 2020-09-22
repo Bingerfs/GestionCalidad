@@ -2,3 +2,23 @@
 60774491, 0, Postpago, Hector Hidalgo
 79789705, 0, Wow, Daniela Vela
 70746843, 0, Prepago, Raquel Montero
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
+60774492, 0, Prepago, null
