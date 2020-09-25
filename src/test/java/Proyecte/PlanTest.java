@@ -127,7 +127,8 @@ public class PlanTest {
     @Test
     public void accountServiceTest(){
         AccountService accountService = new AccountService(new FileAccountRepository("Accounts.txt", "Receivables.txt", new FileClientRepository("clientangos.txt")));
-        assertEquals(true, true);
+        Boolean expected = true;
+        assertEquals(true, expected);
     }
     
 
