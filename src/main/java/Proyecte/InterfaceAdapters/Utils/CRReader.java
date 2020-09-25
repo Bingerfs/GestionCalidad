@@ -13,8 +13,7 @@ public  class CRReader {
 
      public static List<CallRecord>readfilecdr(){
          callRecords = new ArrayList<>();
-         try {
-             BufferedReader in = new BufferedReader(new FileReader("./storage/"+filename));
+         try(BufferedReader in = new BufferedReader(new FileReader("./storage/"+filename));) {
              String str = "";
              while ((str = in.readLine()) != null) {
                  String[] callRecordData = str.split(", ");

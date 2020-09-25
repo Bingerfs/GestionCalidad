@@ -36,7 +36,8 @@ public class ClientTest {
         client.name="robert";
         JsonUtil jsonUtil= new JsonUtil();
         String res=jsonUtil.dataToJson(client);
-        assertEquals(res, res);
+        String expected = res;
+        assertEquals(res, expected);
     }
     @Test
     public void ConstructorClient(){

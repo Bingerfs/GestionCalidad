@@ -16,8 +16,7 @@ public class AccountReader {
 
      public static List<Account>readFile(){
         accounts = new ArrayList<>();
-        try {
-            BufferedReader in = new BufferedReader(new FileReader("./storage/"+filename));
+        try(BufferedReader in = new BufferedReader(new FileReader("./storage/"+filename))) {
             String str = "";
             while ((str = in.readLine()) != null) {
                 String[] accountData = str.split(", ");

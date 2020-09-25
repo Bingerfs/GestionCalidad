@@ -31,10 +31,9 @@ public class FileCDRRepository implements ICDRRepository {
 
     @Override
     public void addCallRecord(CallRecordDto callRecord) {
-        try {
+        try(BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true))) {
 
             // clientFile.createNewFile();
-            BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true));
             Date date = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("dd:MM:yyyy:HH:mm");
             String line = callRecord.id_callRecord + ", " + callRecord.callerPhoneNumber + ", "
@@ -52,8 +51,7 @@ public class FileCDRRepository implements ICDRRepository {
     @Override
     public List<CallRecord> getAllCallRecords() {
         List<CallRecord> callRecords = new ArrayList<>();
-        try {
-            BufferedReader in = new BufferedReader(new FileReader(fileName));
+        try(BufferedReader in = new BufferedReader(new FileReader(fileName))) {
             String str = "";
             while ((str = in.readLine()) != null) {
                 String[] callRecordData = str.split(", ");
@@ -74,8 +72,7 @@ public class FileCDRRepository implements ICDRRepository {
     @Override
     public CallRecord getCallRecordById(int id) {
         CallRecord callRecord = null;
-        try {
-            BufferedReader in = new BufferedReader(new FileReader(fileName));
+        try(BufferedReader in = new BufferedReader(new FileReader(fileName))) {
             String str = "";
             while ((str = in.readLine()) != null) {
                 String[] recordData = str.split(", ");
@@ -97,8 +94,7 @@ public class FileCDRRepository implements ICDRRepository {
     public List<CallRecord> getCallRecordsByPhoneNumber(String phoneNumber) {
         List<CallRecord> callRecords = new ArrayList<>();
         CallRecord callRecord;
-        try {
-            BufferedReader in = new BufferedReader(new FileReader(fileName));
+        try(BufferedReader in = new BufferedReader(new FileReader(fileName))) {
             String str = "";
             while ((str = in.readLine()) != null) {
                 String[] recordData = str.split(", ");

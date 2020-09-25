@@ -23,10 +23,9 @@ public class FileClientRepository implements IClientRepository {
 
     @Override
     public void createClient(ClientDto client) {
-        try {
+        try(BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true))) {
 
             // clientFile.createNewFile();
-            BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true));
             String line = client.name + ", " + client.ci + ", " + client.address;
             out.write(line);
             out.newLine();
@@ -40,8 +39,7 @@ public class FileClientRepository implements IClientRepository {
     @Override
     public List<Client> getAllClients() {
         List<Client> clients = new ArrayList<>();
-        try {
-            BufferedReader in = new BufferedReader(new FileReader(fileName));
+        try(BufferedReader in = new BufferedReader(new FileReader(fileName))) {
             String str = "";
             while ((str = in.readLine()) != null) {
                 String[] clientData = str.split(", ");
@@ -58,8 +56,7 @@ public class FileClientRepository implements IClientRepository {
     @Override
     public Client getClientByCi(String ci) {
         Client client = null;
-        try {
-            BufferedReader in = new BufferedReader(new FileReader(fileName));
+        try(BufferedReader in = new BufferedReader(new FileReader(fileName))) {
             String str = "";
             while ((str = in.readLine()) != null) {
                 String[] clientData = str.split(", ");

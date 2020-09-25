@@ -22,6 +22,8 @@
     <sonar.organization>bingerfs-github</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     <sonar.junit.reportPaths>target/surefire-reports</sonar.junit.reportPaths>
+    <sonar.branch.name>bugFixes2</sonar.branch.name>
+    <sonar.branch.target>bugFixes2</sonar.branch.target>
   </properties>
 
   <dependencies>
