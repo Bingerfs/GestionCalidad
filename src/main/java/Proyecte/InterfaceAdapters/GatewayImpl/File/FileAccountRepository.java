@@ -29,16 +29,15 @@ public class FileAccountRepository implements IAccountRepository {
 
     @Override
     public void createAccount(Account account) {
-        try {
+        try(BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true)),
+            BufferedWriter outR = new BufferedWriter(new FileWriter(fileNameReceivables, true))) {
 
             // clientFile.createNewFile();
-            BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true));
             String line = account.phoneNumber + ", " + account.balance + ", " +  account.accoundType + ", " ;
             //if(clientRepository.getClientByCi(account.client.ci) != null){
                 line = line + account.client.name;
                 out.write(line);
                 out.newLine();
-                BufferedWriter outR = new BufferedWriter(new FileWriter(fileNameReceivables, true)); 
                 line = new String();
                 for(Receivable receivable : account.receivables){
                     line = account.phoneNumber + ", " + receivable.getClass().getSimpleName();
@@ -62,10 +61,9 @@ public class FileAccountRepository implements IAccountRepository {
     public Account getAccountByPhoneNumber(String phoneNumber) {
         Account account = null;
         List<Receivable> receivables = new ArrayList<>();
-        try {
-            BufferedReader in = new BufferedReader(new FileReader(fileName));
+        try(BufferedReader in = new BufferedReader(new FileReader(fileName)),
+            BufferedReader inR = new BufferedReader(new FileReader(fileNameReceivables))) {
             String str = "";
-            BufferedReader inR = new BufferedReader(new FileReader(fileNameReceivables));
             while ((str = in.readLine()) != null) {
                 String[] accountData = str.split(", ");
                 if(phoneNumber.equals(accountData[0])){
@@ -94,10 +92,9 @@ public class FileAccountRepository implements IAccountRepository {
         List<Account> accounts = new ArrayList<>();
         Account account = null;
         List<Receivable> receivables = new ArrayList<>();
-        try {
-            BufferedReader in = new BufferedReader(new FileReader(fileName));
+        try(BufferedReader inR = new BufferedReader(new FileReader(fileNameReceivables)),
+            BufferedReader in = new BufferedReader(new FileReader(fileName))) {
             String str = "";
-            BufferedReader inR = new BufferedReader(new FileReader(fileNameReceivables));
             while ((str = in.readLine()) != null) {
                 String[] accountData = str.split(", ");
                     str = "";
