@@ -29,7 +29,7 @@ public class FileAccountRepository implements IAccountRepository {
 
     @Override
     public void createAccount(Account account) {
-        try(BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true)),
+        try(BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true));
             BufferedWriter outR = new BufferedWriter(new FileWriter(fileNameReceivables, true))) {
 
             // clientFile.createNewFile();
@@ -61,7 +61,7 @@ public class FileAccountRepository implements IAccountRepository {
     public Account getAccountByPhoneNumber(String phoneNumber) {
         Account account = null;
         List<Receivable> receivables = new ArrayList<>();
-        try(BufferedReader in = new BufferedReader(new FileReader(fileName)),
+        try(BufferedReader in = new BufferedReader(new FileReader(fileName));
             BufferedReader inR = new BufferedReader(new FileReader(fileNameReceivables))) {
             String str = "";
             while ((str = in.readLine()) != null) {
@@ -92,7 +92,7 @@ public class FileAccountRepository implements IAccountRepository {
         List<Account> accounts = new ArrayList<>();
         Account account = null;
         List<Receivable> receivables = new ArrayList<>();
-        try(BufferedReader inR = new BufferedReader(new FileReader(fileNameReceivables)),
+        try(BufferedReader inR = new BufferedReader(new FileReader(fileNameReceivables));
             BufferedReader in = new BufferedReader(new FileReader(fileName))) {
             String str = "";
             while ((str = in.readLine()) != null) {
