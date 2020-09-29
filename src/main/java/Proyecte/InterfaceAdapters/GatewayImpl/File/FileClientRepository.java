@@ -24,8 +24,6 @@ public class FileClientRepository implements IClientRepository {
     @Override
     public void createClient(ClientDto client) {
         try(BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true))) {
-
-            // clientFile.createNewFile();
             String line = client.name + ", " + client.ci + ", " + client.address;
             out.write(line);
             out.newLine();

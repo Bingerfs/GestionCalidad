@@ -35,15 +35,11 @@ public class CallRecordController {
         return ViewUtil.render(request, model, Path.Template.CALLRECORDS_ALL);
     };
     public  Route getfileCallrecords = (Request request, Response response) -> {
-        //Map<String, Object> model = new HashMap<>();
         String filepath=getfileurl(request);
         CRReader.filename=filepath;
         HashMap<String, Object> model = new HashMap<>();
         model.put("callRecords", CRReader.readfilecdr());
         return ViewUtil.render(request, model, Path.Template.CALLRECORDS_ALL);
-        //return ViewUtil.render(request, callRecordBoundaryIn.getAllCallRecords(), Path.Template.CALLRECORDS_ALL);
-
-       // return ViewUtil.render(request, model, Path.Template.INDEX);
     };
 
     public Route rateUploadedRecords = (Request request, Response response) -> {

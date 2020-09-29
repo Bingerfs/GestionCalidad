@@ -74,15 +74,4 @@ public class ClientTest {
         assertEquals("abc", clientMapper.transformClient(clientDto).name);
     }
 
-    @Test
-    public void HashTest(){
-
-
-        ClientMapper mapper =  new ClientMapper();
-        HashMap<String, Object> model = new HashMap<>();
-
-
-
-
-    }
 }

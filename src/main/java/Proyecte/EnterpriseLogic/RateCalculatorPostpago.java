@@ -20,8 +20,7 @@ public class RateCalculatorPostpago implements IRateCalculator {
 
     @Override
     public Float calculateRate() {
-        Float totalRate = (float) 0;
-        totalRate = callDuration * ratePerMinute; 
+        Float totalRate = callDuration * ratePerMinute; 
         if(receivables != null){
             for(Receivable receivable : receivables)
                 totalRate = receivable.applyReceivable(totalRate, endpointNumber);

@@ -17,8 +17,7 @@ public class RateCalculatorWow implements IRateCalculator{
     @Override
 	public Float calculateRate() {
      
-    	Float totalRate = (float) 0;
-        totalRate = duration * ratePerMinute;
+    	Float totalRate = duration * ratePerMinute;
         if(receivables !=null){
             for(Receivable receivable : receivables)
                 totalRate = receivable.applyReceivable(totalRate, endpointNumber);

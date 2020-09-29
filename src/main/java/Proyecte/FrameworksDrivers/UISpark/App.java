@@ -42,7 +42,6 @@ public class App
     public static void main(String[] args) {
         File storageDir = new File("storage");
         if (!storageDir.isDirectory()) storageDir.mkdir();
-        System.out.println("file name "+ CRReader.filename);
 
         port(4567);
 
@@ -53,7 +52,6 @@ public class App
         before("*",                  Filters.addTrailingSlashes);
         before("*",                  Filters.handleLocaleChange);
 
-       // get(Path.Web.CALLRECORDS,    uiController.fetchAllBooks);
         get(Path.Web.INDEX,    uiController.index);
         get(Path.Web.CLIENTS_ALL,   clientController.getAllClients);
         get(Path.Web.CALLRECORDS,   callRecordController.getAllCallRecords);
@@ -63,13 +61,10 @@ public class App
         get(Path.Web.UPACCOUNTS, accountController.renderView);
         post(Path.Web.UPACCOUNTS, accountController.saveAccounts);
         get(Path.Web.RETRIEVE, restController.getRecordsByPhoneNumber);
-        //get("*",                     ViewUtil.notFound);
 
         after("*",                   Filters.addGzipHeader);
         enableCORS("*", "*", "*");
 
-
-        
     }
 
     private static void enableCORS(final String origin, final String methods, final String headers) {
@@ -93,7 +88,6 @@ public class App
             response.header("Access-Control-Allow-Origin", origin);
             response.header("Access-Control-Request-Method", methods);
             response.header("Access-Control-Allow-Headers", headers);
-            // Note: this may or may not be necessary in your particular application
         });
     }
 }

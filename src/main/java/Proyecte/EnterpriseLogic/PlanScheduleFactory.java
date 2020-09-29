@@ -1,6 +1,11 @@
 package Proyecte.EnterpriseLogic;
 
 public class PlanScheduleFactory {
+
+	private PlanScheduleFactory() {
+		throw new IllegalStateException("Factory class");
+	  }
+
 	  public static IRateCalculatorBySchedule getPlanSchedule(Integer startingCallTime){
 		  
 	    if (startingCallTime >= 07 && startingCallTime < 21 )

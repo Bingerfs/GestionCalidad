@@ -20,12 +20,9 @@ import static org.junit.Assert.assertEquals;
 
 public class CDRTest {
 
-
-
    @Test
    public void callrecord(){
        CallRecord record = new CallRecord("60774491","79789705","1998",4,(float)60,(float)0);
-
        record.calculateCost();
        Float expected = (float)42.0;
        assertEquals(expected, record.callCost);
@@ -40,32 +37,23 @@ public class CDRTest {
        record.startingCallTime = 4;
         record.calculateCost();
         Float expected = (float)42.0;
-        //String expectedstring=record.getCallerPhoneNumber();
         String date=record.getDate()+record.getId_callRecord();
-
         String expectedstring = "callerPhoneNumber: "+record.getCallerPhoneNumber()+" endPointPhoneNumber= "+ record.getEndPointPhoneNumber() + " startingCallTime= "+record.getStartingCallTime()+
                 " callDuration: "+record.getCallDuration()+" callCost: "+record.getCallCost();
         assertEquals(expectedstring+date, record.toString()+date);
     }
     @Test
     public void callrecorddto(){
-
         CallRecordDto record1 = new CallRecordDto(2,"00000000","60774491","1988",4,(float)60,(float)42.0,"15:02");
-
        assertEquals("00000000", record1.callerPhoneNumber);
-
-
     }
     @Test
     public void callrecordMapperto_DTO(){
-
 
         CallRecordDto record1 = new CallRecordDto(2,"00000000","60774491","1988",4,(float)60,(float)42.0,"15:02");
         CallRecordMapper callRecordMapper=new CallRecordMapper();
         CallRecord callRecord=callRecordMapper.transformCallRecord(record1);
         assertEquals("00000000", callRecord.callerPhoneNumber);
-
-
     }
     @Test
     public void callrecordMapperto_CR(){

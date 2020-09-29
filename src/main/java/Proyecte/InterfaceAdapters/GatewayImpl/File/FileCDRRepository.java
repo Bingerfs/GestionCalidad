@@ -32,8 +32,6 @@ public class FileCDRRepository implements ICDRRepository {
     @Override
     public void addCallRecord(CallRecordDto callRecord) {
         try(BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true))) {
-
-            // clientFile.createNewFile();
             Date date = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("dd:MM:yyyy:HH:mm");
             String line = callRecord.id_callRecord + ", " + callRecord.callerPhoneNumber + ", "
@@ -60,7 +58,6 @@ public class FileCDRRepository implements ICDRRepository {
                         Float.parseFloat(callRecordData[5]), Float.parseFloat(callRecordData[6]));
                 callRecord.savedDate = callRecordData[7];
                 callRecords.add(callRecord);
-                System.out.println("datos" + callRecord);
             }
             in.close();
         } catch (Exception e) {
