@@ -27,7 +27,7 @@ public class CDRTest {
        CallRecord record = new CallRecord("60774491","79789705","1998",4,(float)60,(float)0);
 
        record.calculateCost();
-       Float expected = (float)0.0;
+       Float expected = (float)42.0;
        assertEquals(expected, record.callCost);
    }
     @Test

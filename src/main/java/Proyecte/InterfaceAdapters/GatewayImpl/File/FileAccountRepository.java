@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
@@ -31,14 +32,11 @@ public class FileAccountRepository implements IAccountRepository {
     public void createAccount(Account account) {
         try(BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true));
             BufferedWriter outR = new BufferedWriter(new FileWriter(fileNameReceivables, true))) {
-
-            // clientFile.createNewFile();
             String line = account.phoneNumber + ", " + account.balance + ", " +  account.accoundType + ", " ;
-            //if(clientRepository.getClientByCi(account.client.ci) != null){
                 line = line + account.client.name;
                 out.write(line);
                 out.newLine();
-                line = new String();
+                line = "";
                 for(Receivable receivable : account.receivables){
                     line = account.phoneNumber + ", " + receivable.getClass().getSimpleName();
                     for (Entry<String, Object> entry : receivable.getData().entrySet()) {
@@ -49,12 +47,25 @@ public class FileAccountRepository implements IAccountRepository {
                     outR.newLine();
                 }
                 outR.close();
-            //}
             out.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
+
+    private List<Receivable> getReceivables(String[] accountData, String phoneNumber, BufferedReader inR) throws IOException{
+        List<Receivable> receivables = new ArrayList<>();
+        String str = "";
+        if(phoneNumber.equals(accountData[0])){
+            while ((str = inR.readLine()) != null){
+                String[] receivableData = str.split(", ");
+                if(phoneNumber.equals(receivableData[0]) && receivableData[1].equals("FriendsReceivable")){
+                    receivables.add(new FriendsReceivable(receivableData[2]));
+                }
+            }
+        }
+        return receivables;
     }
 
     @Override
@@ -66,18 +77,9 @@ public class FileAccountRepository implements IAccountRepository {
             String str = "";
             while ((str = in.readLine()) != null) {
                 String[] accountData = str.split(", ");
-                if(phoneNumber.equals(accountData[0])){
-                    str = "";
-                    while ((str = inR.readLine()) != null){
-                        String[] receivableData = str.split(", ");
-                        if(phoneNumber.equals(receivableData[0])){
-                            if(receivableData[1].equals("FriendsReceivable"))
-                                receivables.add(new FriendsReceivable(receivableData[2]));
-                        }
-                    }
+                receivables = getReceivables(accountData, phoneNumber, inR);
                     account = new Account(clientRepository.getClientByCi(accountData[3]), accountData[0], receivables, accountData[2]);
                     break;
-                }
             }
             inR.close();
             in.close();
@@ -100,9 +102,8 @@ public class FileAccountRepository implements IAccountRepository {
                     str = "";
                     while ((str = inR.readLine()) != null){
                         String[] receivableData = str.split(", ");
-                        if(accountData[0].equals(receivableData[0])){
-                            if(receivableData[1].equals("FriendsReceivable"))
-                                receivables.add(new FriendsReceivable(receivableData[2]));
+                        if(accountData[0].equals(receivableData[0]) && receivableData[1].equals("FriendsReceivable")){
+                            receivables.add(new FriendsReceivable(receivableData[2]));
                         }
                     }
                     account = new Account(new Client(accountData[3], "", ""), accountData[0], receivables, accountData[2]);
