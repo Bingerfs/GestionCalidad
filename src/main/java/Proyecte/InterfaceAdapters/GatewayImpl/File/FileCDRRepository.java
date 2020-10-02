@@ -41,7 +41,7 @@ public class FileCDRRepository implements ICDRRepository {
             out.newLine();
             out.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            // TODO: handle exception
         }
 
     }
@@ -82,7 +82,7 @@ public class FileCDRRepository implements ICDRRepository {
             }
             in.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            // TODO: handle exception
         }
         return callRecord;
     }
@@ -104,7 +104,7 @@ public class FileCDRRepository implements ICDRRepository {
             }
             in.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            // TODO: handle exception
         }
         return callRecords;
     }

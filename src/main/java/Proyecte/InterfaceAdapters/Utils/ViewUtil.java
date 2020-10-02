@@ -9,6 +9,10 @@ import static Proyecte.InterfaceAdapters.Utils.RequestUtil.*;
 
 public class ViewUtil {
 
+    private ViewUtil() {
+		throw new IllegalStateException("Utiliy class");
+	  }
+
     public static String render(Request request, Map<String, Object> model, String templatePath) {
         model.put("msg", new MessageBundle(getSessionLocale(request)));
          /*model.put("currentUser", getSessionCurrentUser(request));*/

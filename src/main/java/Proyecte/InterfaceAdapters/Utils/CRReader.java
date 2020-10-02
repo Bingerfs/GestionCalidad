@@ -11,6 +11,10 @@ public  class CRReader {
      public static String filename;
      public static List<CallRecord> callRecords;
 
+     private CRReader() {
+		throw new IllegalStateException("Utiliy class");
+	  }
+
      public static List<CallRecord>readfilecdr(){
          callRecords = new ArrayList<>();
          try(BufferedReader in = new BufferedReader(new FileReader("./storage/"+filename));) {

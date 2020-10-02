@@ -2,6 +2,9 @@ package Proyecte.InterfaceAdapters.Utils;
 import lombok.*;
 
 public class Path {
+    private Path() {
+		throw new IllegalStateException("Utiliy class");
+	  }
     public static class Web {
         @Getter public static final String CALLRECORDS = "/callrecords/";
         @Getter public static final String INDEX = "/";

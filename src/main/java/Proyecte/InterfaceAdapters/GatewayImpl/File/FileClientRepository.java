@@ -65,7 +65,7 @@ public class FileClientRepository implements IClientRepository {
             }
             in.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            // TODO: handle exception
         }
         return client;
     }

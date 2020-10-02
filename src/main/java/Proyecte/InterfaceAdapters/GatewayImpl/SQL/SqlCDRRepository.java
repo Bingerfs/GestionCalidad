@@ -4,6 +4,7 @@ import Proyecte.ApplicationLogic.DTOMappers.CallRecordDto;
 import Proyecte.EnterpriseLogic.CallRecord;
 import Proyecte.ApplicationLogic.BoundaryGateways.ICDRRepository;
 
+import java.util.Collections;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -21,7 +22,7 @@ public class SqlCDRRepository implements ICDRRepository {
     @Override
     public List<CallRecord> getAllCallRecords() {
         // TODO Auto-generated method stub
-        return null;
+        return Collections.emptyList();
     }
 
     @Override
@@ -30,10 +31,6 @@ public class SqlCDRRepository implements ICDRRepository {
     }
 
 
-    /*
-     * @Override public CallRecord getCallRecordById() { // TODO Auto-generated
-     * method stub return null; }
-     */
     public static void createNewDatabase(String fileName) {
 
         String url = "jdbc:sqlite:C:/sqlite/db/" + fileName;
@@ -57,7 +54,7 @@ public class SqlCDRRepository implements ICDRRepository {
     @Override
     public List<CallRecord> getCallRecordsByPhoneNumber(String phoneNumber) {
         // TODO Auto-generated method stub
-        return null;
+        return Collections.emptyList();
     }
 
 }

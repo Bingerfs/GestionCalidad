@@ -14,6 +14,10 @@ public class AccountReader {
     public static String filename;
      public static List<Account> accounts;
 
+     private AccountReader() {
+		throw new IllegalStateException("Utiliy class");
+	  }
+
      public static List<Account>readFile(){
         accounts = new ArrayList<>();
         try(BufferedReader in = new BufferedReader(new FileReader("./storage/"+filename))) {
@@ -30,7 +34,7 @@ public class AccountReader {
             }
             in.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            // TODO: handle exception
         }
          return accounts;
      }

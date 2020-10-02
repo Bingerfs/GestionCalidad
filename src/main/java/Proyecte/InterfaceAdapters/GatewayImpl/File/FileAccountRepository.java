@@ -49,7 +49,7 @@ public class FileAccountRepository implements IAccountRepository {
                 outR.close();
             out.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            // TODO: handle exception
         }
 
     }
@@ -84,7 +84,7 @@ public class FileAccountRepository implements IAccountRepository {
             inR.close();
             in.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            // TODO: handle exception
         }
         return account;
     }
@@ -113,7 +113,7 @@ public class FileAccountRepository implements IAccountRepository {
             inR.close();
             in.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            // TODO: handle exception
         }
         return accounts;
     }

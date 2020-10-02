@@ -44,7 +44,7 @@ public class SqlClientRepository implements IClientRepository {
         } catch (HibernateException ex) {
             if (tx != null)
                 tx.rollback();
-            ex.printStackTrace();
+            // TODO: handle exception
         } finally {
             session.close();
         }

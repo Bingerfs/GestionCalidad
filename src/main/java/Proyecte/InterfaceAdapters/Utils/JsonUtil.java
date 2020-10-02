@@ -2,6 +2,7 @@ package Proyecte.InterfaceAdapters.Utils;
 import com.fasterxml.jackson.databind.*;
 import java.io.*;
 public class JsonUtil {
+    
     public  String dataToJson(Object data) {
         try {
             ObjectMapper mapper = new ObjectMapper();

@@ -14,6 +14,10 @@ import java.nio.file.StandardCopyOption;
 import java.util.stream.Collectors;
 
 public class RequestUtil {
+
+    private RequestUtil() {
+		throw new IllegalStateException("Utiliy class");
+	  }
     public static String getQueryLocale(Request request) {
         return request.queryParams("locale");
     }

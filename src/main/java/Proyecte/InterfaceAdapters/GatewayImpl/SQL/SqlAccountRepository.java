@@ -3,6 +3,8 @@ import Proyecte.EnterpriseLogic.Account;
 import Proyecte.EnterpriseLogic.Client;
 import Proyecte.ApplicationLogic.BoundaryGateways.IAccountRepository;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -31,7 +33,7 @@ public class SqlAccountRepository implements IAccountRepository {
         } catch (HibernateException ex) {
             if (tx != null)
                 tx.rollback();
-            ex.printStackTrace();
+            // TODO: handle exception
         } finally {
             session.close();
         }
@@ -59,7 +61,7 @@ public class SqlAccountRepository implements IAccountRepository {
     @Override
     public List<Account> getAccounts() {
         // TODO Auto-generated method stub
-        return null;
+        return Collections.emptyList();
     }
     
     
