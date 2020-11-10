@@ -1,6 +1,11 @@
 package Proyecte;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
@@ -14,7 +19,6 @@ import Proyecte.ApplicationLogic.DTOMappers.AccountDto;
 import Proyecte.ApplicationLogic.DTOMappers.AccountMapper;
 import Proyecte.InterfaceAdapters.GatewayImpl.File.FileAccountRepository;
 import Proyecte.InterfaceAdapters.GatewayImpl.File.FileClientRepository;
-import org.junit.Test;
 import java.util.List;
 
 import java.util.ArrayList;

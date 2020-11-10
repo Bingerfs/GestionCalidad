@@ -1,5 +1,10 @@
 package Proyecte;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 import Proyecte.ApplicationLogic.BoundaryGateways.CallRecordBoundaryIn;
 import Proyecte.ApplicationLogic.BoundaryGateways.CallRecordBoundaryOut;
 import Proyecte.ApplicationLogic.BoundaryGateways.ICDRRepository;
@@ -10,13 +15,11 @@ import Proyecte.EnterpriseLogic.CallRecord;
 import Proyecte.InterfaceAdapters.GatewayImpl.File.FileCDRRepository;
 import Proyecte.InterfaceAdapters.Presenters.CallRecordPresenter;
 import Proyecte.InterfaceAdapters.Utils.CRReader;
-import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
 
 public class CDRTest {
 
