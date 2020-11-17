@@ -32,6 +32,7 @@ public class ClientTest {
         ClientDto clientDto1=clientMapper.transClient(client);
         assertEquals(clientDto.ci, clientBoundaryIn.findClientByCi("34").ci);
     }
+    
     @Test
     public void datatojson(){
         Client client = new Client();
@@ -78,4 +79,19 @@ public class ClientTest {
         assertEquals("abc", clientMapper.transformClient(clientDto).name);
     }
 
+    @Test
+    public void getClientDtoName(){
+        ClientDto clientDto = new ClientDto("Carlos","uhh","34");
+        String name = "Carlos";
+        assertEquals(name, clientDto.getName());
+    }
+
+    @Test
+    public void getClientDtoCi(){
+        ClientDto clientDto = new ClientDto("Carlos","uhh","34");
+        String ci = "34";
+        assertEquals(ci, clientDto.getCi());
+    }
+
+    
 }

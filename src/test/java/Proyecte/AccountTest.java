@@ -17,6 +17,7 @@ import Proyecte.EnterpriseLogic.FriendsReceivable;
 import Proyecte.EnterpriseLogic.Receivable;
 import Proyecte.ApplicationLogic.DTOMappers.AccountDto;
 import Proyecte.ApplicationLogic.DTOMappers.AccountMapper;
+import Proyecte.ApplicationLogic.UseCases.AccountService;
 import Proyecte.InterfaceAdapters.GatewayImpl.File.FileAccountRepository;
 import Proyecte.InterfaceAdapters.GatewayImpl.File.FileClientRepository;
 import java.util.List;
@@ -81,9 +82,9 @@ public class AccountTest {
         Account account = new Account(client, "60774492", receivables, "Prepago");
         account.AddReceivable(res1);
         IAccountRepository accountRepository = new FileAccountRepository("Accounts.txt","Receivables.txt",new FileClientRepository("clientangos.txt"));
-        accountRepository.createAccount(account);
-        assertEquals("Prepago", accountRepository.getAccountByPhoneNumber("60774492").accoundType);
-
+        AccountService service = new AccountService(accountRepository);
+        service.createAccount(account);
+        assertEquals("Prepago", service.getAccount().get(0).accoundType);
     }
     @Test
     public void ConstructorAccountphonenumber(){
