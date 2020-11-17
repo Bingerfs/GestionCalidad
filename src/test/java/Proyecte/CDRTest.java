@@ -15,6 +15,8 @@ import Proyecte.EnterpriseLogic.CallRecord;
 import Proyecte.InterfaceAdapters.GatewayImpl.File.FileCDRRepository;
 import Proyecte.InterfaceAdapters.Presenters.CallRecordPresenter;
 import Proyecte.InterfaceAdapters.Utils.CRReader;
+import Proyecte.ApplicationLogic.UseCases.RestService;
+import Proyecte.ApplicationLogic.BoundaryGateways.ICDRRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -114,7 +116,7 @@ public class CDRTest {
     }
     @Test
     public void cr_reader(){
-        List<CallRecord>callRecordList=new ArrayList<>();
+        List<CallRecord> callRecordList = new ArrayList<>();
         CallRecord record1 = new CallRecord("00000","22222","1988-06-10",10,null,(float)0);
         record1.id_callRecord=1;
         CallRecord record2 = new CallRecord("00000","22222","1988-06-10",10,null,(float)0);
@@ -147,26 +149,67 @@ public class CDRTest {
         assertEquals(listavacia, CRReader.readfilecdr());
     }
 
+    @Test
+    public void getCallRecordId(){
+        CallRecordDto callRecordDto = new CallRecordDto(2,"60774491","79789705","1988",4,(float)60,(float)42.0,"15:02");
+        Integer id = 2;
 
-    /*@Test
-    public void cr_readercalccost(){
+        assertEquals(id, callRecordDto.getId_callRecord());
+    }
 
-        //CRReader.filename="cr.txt";
-        //List<CallRecord>callRecordList=new ArrayList<>();
-        CRReader.filename="cdr.txt";
-        List<CallRecord>callRecordList=CRReader.readfilecdr();
+    @Test
+    public void getCallRecordCallerPhoneNumber(){
+        CallRecordDto callRecordDto = new CallRecordDto(2,"60774491","79789705","1988",4,(float)60,(float)42.0,"15:02");
+        String phoneNumber = "60774491";
 
-       // List<CallRecord>lis=new ArrayList<>();
-       // callRecordList=CRReader.readfilecdr();
-        //lis2=CRReader.callRecords;
-        //CRReader.rateAllRecords();
-        Float expect=(float)0.0;
-        //Float expected = (float)42.0;
+        assertEquals(phoneNumber,callRecordDto.getCallerPhoneNumber());
+    }
 
-        assertEquals(1, callRecordList.get(0).id_callRecord);
+    @Test
+    public void getCallRecordEndPointPhoneNumber(){
+        CallRecordDto callRecordDto = new CallRecordDto(2,"60774491","79789705","1988",4,(float)60,(float)42.0,"15:02");
+        String endPointPhoneNumber = "79789705";
 
+        assertEquals(endPointPhoneNumber, callRecordDto.getEndPointPhoneNumber());
+    }
 
-    }*/
+    @Test
+    public void getCallRecordDate(){
+        CallRecordDto callRecordDto = new CallRecordDto(2,"60774491","79789705","1988",4,(float)60,(float)42.0,"15:02");
+        String year = "1988";
 
+        assertEquals(year, callRecordDto.getDate());
+    }
 
+    @Test
+    public void getCallRecordStartingCallTime(){
+        CallRecordDto callRecordDto = new CallRecordDto(2,"60774491","79789705","1988",4,(float)60,(float)42.0,"15:02");
+        Integer startingCallTime = 4;
+
+        assertEquals(startingCallTime, callRecordDto.getStartingCallTime());
+    }
+
+    @Test
+    public void getCallRecordCallDuration(){
+        CallRecordDto callRecordDto = new CallRecordDto(2,"60774491","79789705","1988",4,(float)60,(float)42.0,"15:02");
+        Float callDuration = (float)60;
+
+        assertEquals(callDuration, callRecordDto.getCallDuration());
+    }
+
+    @Test
+    public void getCallRecordCallCost(){
+        CallRecordDto callRecordDto = new CallRecordDto(2,"60774491","79789705","1988",4,(float)60,(float)42.0,"15:02");
+        Float callCost = (float)42;
+
+        assertEquals(callCost, callRecordDto.getCallCost());
+    }
+
+    @Test
+    public void getCallRecordSavedDate(){
+        CallRecordDto callRecordDto = new CallRecordDto(2,"60774491","79789705","1988",4,(float)60,(float)42.0,"15:02");
+        String savedDate = "15:02";
+
+        assertEquals(savedDate, callRecordDto.getSavedDate());
+    }
 }
