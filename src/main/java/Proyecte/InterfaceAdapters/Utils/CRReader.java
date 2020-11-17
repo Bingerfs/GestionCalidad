@@ -9,7 +9,7 @@ import java.util.List;
 
 public  class CRReader {
      public static String filename;
-     public static List<CallRecord> callRecords;
+     public static List<CallRecord> callRecords = new ArrayList();
 
      private CRReader() {
 		throw new IllegalStateException("Utiliy class");
