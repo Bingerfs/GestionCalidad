@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 public class RequestUtil {
 
-    private RequestUtil() {
+    public RequestUtil() {
 		throw new IllegalStateException("Utiliy class");
 	  }
     public static String getQueryLocale(Request request) {
@@ -35,9 +35,8 @@ public class RequestUtil {
             file=uploadedFileName;
             InputStream stream = filePart.getInputStream();
             // Write stream to file under storage folder
-            System.out.println("llega aqui "+uploadedFileName);
             Files.copy(stream, Paths.get("storage").resolve(uploadedFileName), StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException | ServletException e) {
+        } catch (Exception e) {
             return "Exception occurred while uploading file" + e.getMessage();
         }
         return file;
