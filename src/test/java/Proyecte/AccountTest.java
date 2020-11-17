@@ -118,28 +118,13 @@ public class AccountTest {
         assertEquals("BalancePrepago", spect);
 
     }
-    /*@Test
-    public void Accountcontroller(){
-        Client client = new Client();
-        client.address="asd";
-        client.ci = "12345";
-        List<Receivable> receivables = new ArrayList<>();
-        Account account1=new Account();
-        account1.setReceivables(receivables);
-        account1.setClient(client);
-        account1.phoneNumber="60774491";
-        account1.setPhoneNumber("60774491");
-        AccountBoundaryIn accountBoundaryIn=new AccountService();
-        AccountController accountController=new AccountController(accountBoundaryIn);
-
-        assertEquals("60774491", account1.getPhoneNumber());
-    }*/
+    
     @Test
     public void accountdto() {
         AccountDto accountDto=new AccountDto("robert","312312","Balance","Prepago",null);
         assertEquals("robert", accountDto.client);
-
     }
+
     @Test
     public void accountMapper() {
         Client client = new Client();
@@ -152,13 +137,10 @@ public class AccountTest {
         receivables.add(new FriendsReceivable(friends));
         Account account = new Account(client, "60774491", receivables, "Prepago");
         AccountMapper accountMapper=new AccountMapper();
-        //IClientRepository iClientRepository=new FileClientRepository("clientangos.txt");
-        //AccountDto accountDto=new AccountDto("robert","312312","Balance","Prepago",null);
-        //Account account=accountMapper.transformDto(accountDto,iClientRepository);
         AccountDto accountDto=accountMapper.transformAccount(account);
         assertEquals("12345", accountDto.client);
-
     }
+
     @Test
     public void accountMapper2() {
         Client client = new Client();
@@ -168,7 +150,6 @@ public class AccountTest {
         List<Receivable> receivables = new ArrayList<>();
         String friends;
         friends = "79789704";
-        //Receivable res1 = new FriendsReceivable(friends);
         receivables.add(new FriendsReceivable(friends));
         Account account = new Account(client, "60774491", receivables, "Prepago");
         AccountMapper accountMapper=new AccountMapper();
@@ -178,9 +159,7 @@ public class AccountTest {
         IClientRepository iClientRepository=new FileClientRepository("clientangos.txt");
         AccountDto accountDto=new AccountDto("robert","312312","Balance","Prepago",data);
         Account account2=accountMapper.transformDto(accountDto,iClientRepository);
-        //AccountDto accountDto=accountMapper.transformAccount(account);
         assertEquals(null, account2.client);
-
     }
 
 

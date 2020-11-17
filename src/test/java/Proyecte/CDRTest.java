@@ -104,7 +104,6 @@ public class CDRTest {
 
         List<CallRecordDto> getAllCallRecords;
             getAllCallRecords =callRecordBoundaryIn.getAllCallRecords();
-            //callRecordBoundaryOut.showAllCallRecords(callRecords);
         CallRecordDto record1 = new CallRecordDto(2,"60774491","79789705","1988",4,(float)60,(float)42.0,"15:02");
         CallRecordMapper callRecordMapper=new CallRecordMapper();
         CallRecord callRecord=callRecordMapper.transformCallRecord(record1);
@@ -145,7 +144,6 @@ public class CDRTest {
 
         CRReader.filename="callrecordslist2.txt";
         List<Integer> listavacia = new ArrayList<>();
-        //List<CallRecord>lis2=CRReader.readfilecdr();
         assertEquals(listavacia, CRReader.readfilecdr());
     }
 

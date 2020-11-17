@@ -8,12 +8,16 @@ import java.util.List;
 public class RepositoryClient {
     private List<Client> clients;
 
-    RepositoryClient(){
+    public RepositoryClient(){
         clients = new ArrayList<>();
     }
 
-    void addClient(Client client){
+    public void addClient(Client client){
         clients.add(client);
+    }
+
+    public List<Client> getClients(){
+        return clients;
     }
 
 }

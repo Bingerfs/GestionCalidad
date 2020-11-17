@@ -3,7 +3,8 @@ package Proyecte.EnterpriseLogic;
 public class RateCalculatorFactory {
 	private RateCalculatorFactory() {
 		throw new IllegalStateException("Factory class");
-	  }
+	}
+	
 	public static IRateCalculator getRateCalculator(CallRecord callRecord, Account account){
 		
 		IRateCalculator calculator = null;

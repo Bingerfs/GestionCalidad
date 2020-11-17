@@ -35,7 +35,6 @@ public class AppTest
         callRecord.endPointPhoneNumber = "79789705";
         callRecords.add(callRecord);
 
-        //callRecords =App.initializeCallRecords();
         assertEquals( callRecord.callCost,callRecords.get(0).callCost );
     }
 }
