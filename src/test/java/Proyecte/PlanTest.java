@@ -12,6 +12,8 @@ import Proyecte.ApplicationLogic.UseCases.AccountService;
 import Proyecte.EnterpriseLogic.*;
 import Proyecte.InterfaceAdapters.GatewayImpl.File.FileAccountRepository;
 import Proyecte.InterfaceAdapters.GatewayImpl.File.FileClientRepository;
+import Proyecte.EnterpriseLogic.CallRecord;
+
 
 
 public class PlanTest {
@@ -51,10 +53,7 @@ public class PlanTest {
     	Float result = calculator.calculateRate();
     	Float expected = (float) 42.0;
     	assertEquals(expected, result);
-    	
     }
-    
-    
 
     @Test
     public void calculateWow(){
@@ -132,5 +131,45 @@ public class PlanTest {
         assertEquals(true, expected);
     }
     
+    @Test
+    public void getCostPostpago(){
+        CallRecord record = new CallRecord("60774491","79789705","1998",4,(float)60,(float)0); 
+        Client client = new Client();
+        client.address = "asd";
+        client.ci = "12345";
+        client.name="robert";
+        List<Receivable> receivables = new ArrayList<>();
+        String friends;
+        friends = "79789704";
+        receivables.add(new FriendsReceivable(friends));
+        Account account = new Account(client, "60774491", receivables, "Postpago");
+        IRateCalculator calculator = RateCalculatorFactory.getRateCalculator(record, account);
+        Float callCost = calculator.calculateRate();
 
+        Float spectedCost = (float)60;
+
+        assertEquals(spectedCost,callCost);
+    }
+
+    @Test
+    public void getCostWow(){
+        CallRecord record = new CallRecord("60774491","79789705","1998",4,(float)60,(float)0); 
+        Client client = new Client();
+        client.setAddress("asd");
+        client.setCi("12345");
+        client.setName("robert");
+        List<Receivable> receivables = new ArrayList<>();
+        String friends;
+        friends = "79789704";
+        receivables.add(new FriendsReceivable(friends));
+        Account account = new Account(client, "60774491", receivables, "Wow");
+        IRateCalculator calculator = RateCalculatorFactory.getRateCalculator(record, account);
+        Float callCost = calculator.calculateRate();
+
+        Float spectedCost = (float)59.4;
+
+        assertEquals(spectedCost,callCost);
+    }
+    
+    
 }

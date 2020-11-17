@@ -13,6 +13,7 @@ import Proyecte.EnterpriseLogic.Client;
 import Proyecte.InterfaceAdapters.GatewayImpl.File.FileClientRepository;
 import Proyecte.InterfaceAdapters.Presenters.ClientPresenter;
 import Proyecte.InterfaceAdapters.Utils.JsonUtil;
+import Proyecte.ApplicationLogic.RepositoryClient;
 
 
 import java.util.HashMap;
@@ -33,7 +34,7 @@ public class ClientTest {
         assertEquals(clientDto.ci, clientBoundaryIn.findClientByCi("34").ci);
     }
     
-    @Test
+    @Test//*
     public void datatojson(){
         Client client = new Client();
         client.address = "asd";
@@ -42,8 +43,9 @@ public class ClientTest {
         JsonUtil jsonUtil= new JsonUtil();
         String res=jsonUtil.dataToJson(client);
         String expected = res;
-        assertEquals(res, expected);
+        assertEquals(expected,res);
     }
+
     @Test
     public void ConstructorClient(){
         Client client = new Client("abc","12345","asd");
@@ -91,6 +93,20 @@ public class ClientTest {
         ClientDto clientDto = new ClientDto("Carlos","uhh","34");
         String ci = "34";
         assertEquals(ci, clientDto.getCi());
+    }
+
+    @Test
+    public void addClientToRepository(){
+        Client client = new Client();
+        client.setAddress("address");
+        client.setCi("12345");
+        client.setName("robert");
+
+        RepositoryClient repository= new RepositoryClient() ;
+
+        repository.addClient(client);
+
+        assertEquals(client, repository.getClients().get(0));
     }
 
     
