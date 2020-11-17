@@ -3,8 +3,12 @@ package Proyecte;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.anyString;
+
+import java.io.InputStream;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,6 +35,12 @@ public class RequestUtilTest {
 
     @Mock
     HttpServletRequest req;
+
+    @Mock
+    Part part;
+
+    @Mock
+    InputStream stream;
 
     @Test
     void getQueryLocaleReturnsValueFromLocaleParameter() {
@@ -105,8 +115,23 @@ public class RequestUtilTest {
     }
 
     @Test
+    void getFileUrlShouldReturnFilename(){
+        try {
+            Mockito.when(part.getInputStream()).thenReturn(stream);
+            Mockito.when(part.getSubmittedFileName()).thenReturn("test");
+            Mockito.when(req.getPart(anyString())).thenReturn(part);
+            Mockito.when(request.raw()).thenReturn(req);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String res = RequestUtil.getfileurl(request);
+        assertTrue(res.contains("test"));
+    }
+
+    @Test
     void getFileUrlShouldReturnException(){
         try {
+            Mockito.when(req.getPart(anyString())).thenReturn(part);
             Mockito.when(request.raw()).thenReturn(req);
         } catch (Exception e) {
             e.printStackTrace();

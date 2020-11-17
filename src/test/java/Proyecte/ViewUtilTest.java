@@ -27,6 +27,8 @@ import org.mockito.stubbing.Answer;
 import Proyecte.InterfaceAdapters.Utils.Path;
 import Proyecte.InterfaceAdapters.Utils.ViewUtil;
 import spark.Request;
+import spark.Response;
+import spark.Route;
 import spark.Session;
 
 
@@ -34,10 +36,15 @@ import spark.Session;
 public class ViewUtilTest {
     @Mock
     Request request;
+
+    @Mock
+    Response response;
     
     @Mock
     Session session;
 
+    @Mock
+    Route route;
    
 
     @Test
@@ -63,7 +70,15 @@ public class ViewUtilTest {
 
     @Test
     void renderShouldReturnNotAccesiblePropOn406(){
-        Object actual = ViewUtil.notAcceptable;
-        assertNotNull(actual);
+        Mockito.when(session.attribute("locale")).thenReturn("en");
+        Mockito.when(request.session()).thenReturn(session);
+        route = ViewUtil.notAcceptable;
+        String respuesta = "";
+        try {
+            respuesta = (String)route.handle(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertTrue(respuesta.contains("No suitable content"));
     }
 }
